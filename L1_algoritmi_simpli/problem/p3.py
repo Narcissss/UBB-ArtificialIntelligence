@@ -1,16 +1,14 @@
 """
 Să se determine produsul scalar a doi vectori rari care conțin numere reale. Un vector este rar
 atunci când conține multe elemente nule.
-De ex. produsul scalar dintre [1,0,2,0,3] și [1,2,0,3,1] este 4. 
+De ex. produsul scalar dintre [1,0,2,0,3] și [1,2,0,3,1] este 4.
+
+Complexitate: O(n) - timp, O(1) - spatiu suplimentar
 """
 
 from typing import Tuple
-import os
+from problem.utils import getAbsolutePath
 
-def getAbsolutePath(filePath: str, relativePath: str) -> str:
-    fileDir = os.path.dirname(__file__)
-    absolutePath = os.path.join(fileDir, relativePath)
-    return absolutePath
 
 def readVectors(path: str) -> Tuple[list, list]:
     vectors = ([], [])

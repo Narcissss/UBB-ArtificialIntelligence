@@ -1,15 +1,13 @@
 """
 Să se determine distanța Euclideană între două locații identificate prin perechi de numere.
 De ex. distanța între (1,5) și (4,1) este 5.0
+
+Complexitate: O(1) - timp, O(1) - spatiu suplimentar
 """
 from typing import List
 import math
-import os
+from problem.utils import getAbsolutePath
 
-def getAbsolutePath(filePath: str, relativePath: str) -> str:
-    fileDir = os.path.dirname(__file__)
-    absolutePath = os.path.join(fileDir, relativePath)
-    return absolutePath
 
 def readNumbers(path: str) -> List[tuple]:
     coords = []

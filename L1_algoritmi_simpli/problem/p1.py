@@ -3,15 +3,14 @@
 Să se determine ultimul (din punct de vedere alfabetic) cuvânt care poate apărea într-un text
 care conține mai multe cuvinte separate prin ” ” (spațiu).
 De ex. ultimul (dpdv alfabetic) cuvânt din ”Ana are mere rosii si galbene” este
-cuvântul "si". 
+cuvântul "si".
+
+Complexitate: O(n) - timp, O(1) - spatiu suplimentar
+    n - lungimea textului
 """
 
-import os
+from problem.utils import getAbsolutePath
 
-def getAbsolutePath(filePath: str, relativePath: str) -> str:
-    fileDir = os.path.dirname(__file__)
-    absolutePath = os.path.join(fileDir, relativePath)
-    return absolutePath
 
 def readWords(path: str) -> list:
     fileD = open(path, 'r')
