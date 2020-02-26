@@ -3,7 +3,9 @@
 from problem.p1 import runTests as problem1
 from problem.p2 import runTests as problem2
 from problem.p3 import runTests as problem3
+from problem.p4 import runTests as problem4
 from problem.p5 import runTests as problem5
+from problem.p6 import runTests as problem6
 from problem.p9 import runTests as problem9
 from problem.p11 import runTests as problem11
 
@@ -11,7 +13,9 @@ def main():
     problem1()
     problem2()
     problem3()
+    problem4()
     problem5()
+    problem6()
     problem9()
     problem11()
 
