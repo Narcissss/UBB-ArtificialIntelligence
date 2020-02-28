@@ -45,7 +45,6 @@ class Gui:
     
     def _saveToFile(self):
         fileName = FileDialog.asksaveasfilename(initialdir = "./", title = "Select file", filetypes = (("text files", "*.txt"), ("all files", "*.*")))
-        print(fileName)
         if fileName:
             text = self._problemText.get(1.0, END)
             self._fileService.saveTextToFile(fileName, text)
