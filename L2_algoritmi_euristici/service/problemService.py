@@ -1,5 +1,5 @@
 from typing import List, Tuple, Dict
-from domain.problem import ProblemResult, Problem
+from domain.problem import TSProblemResult, TSProblem
 
 
 class ProblemService:
@@ -7,34 +7,35 @@ class ProblemService:
     def __init__(self):
         pass
 
-    """
-    Complexity: O(n*n) - time, O(n) - additional space
-        n - number of cities
-    """
-    def findShothestPath_Greedy(self, problem: Problem) -> ProblemResult:
-        totalTime = 0
+    
+    def findShothestPath_Greedy(self, problem: TSProblem) -> TSProblemResult:
+        """
+        Complexity: O(n*n) - time, O(n) - additional space
+            n - number of cities
+        """
         startCity = 0
-        clientCity = problem.numberOfCities - 1
-        cities = []
-        cities.append(startCity)
+        cities = [startCity]
 
-        totalTime += self._calculateShortestPath(startCity, clientCity, problem.distances, cities, problem.numberOfCities)
-        totalTime += self._calculateShortestPath(clientCity, startCity, problem.distances, cities, problem.numberOfCities)
-        
-        return ProblemResult(problem.numberOfCities, cities, totalTime)
+        totalTime = self._calculateShortestPath(startCity, problem.distances, cities, problem.numberOfCities)
 
-    def _calculateShortestPath(self, startCity: int, endCity: int, distances: List[List[int]], cities: List[int], cityCount: int) -> int:
+        return TSProblemResult(problem.numberOfCities, cities, totalTime)
+
+    def _calculateShortestPath(self, startCity: int, distances: List[List[int]], cities: List[int], cityCount: int) -> int:
         visited = [False] * cityCount
         totalTime = 0
         currentCity = startCity
         visited[startCity] = True
+        visitedCities = 1
         
-        while currentCity != endCity:
+        while visitedCities < cityCount:
             shorthestDistanceToNextCity = self._findShorthestDistanceToNextCity(distances[currentCity], visited)
             currentCity = shorthestDistanceToNextCity["city"]
             totalTime += shorthestDistanceToNextCity["distance"]
             cities.append(currentCity)
             visited[currentCity] = True
+            visitedCities += 1
+        totalTime += distances[currentCity][startCity]
+
         return totalTime
 
     """

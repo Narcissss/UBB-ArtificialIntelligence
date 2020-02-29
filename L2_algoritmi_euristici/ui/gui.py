@@ -3,7 +3,7 @@ from tkinter import filedialog as FileDialog
 from tkinter import INSERT, DISABLED, END, NORMAL
 from tkinter.scrolledtext import ScrolledText
 
-from domain.problem import Problem, ProblemResult
+from domain.problem import TSProblem, TSProblemResult
 
 class Gui:
 
@@ -52,7 +52,7 @@ class Gui:
     def _solveProblem(self):
         text = self._problemText.get(1.0, END)
         if len(text) > 1:
-            problem = Problem(text)
+            problem = TSProblem(text)
             result = self._problemService.findShothestPath_Greedy(problem)
             self._resultText.config(state = NORMAL)
             self._resultText.delete(1.0, END)

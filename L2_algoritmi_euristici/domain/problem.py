@@ -1,14 +1,17 @@
 
 from typing import List
 
-class Problem:
+class TSProblem:
+    """
+    Traveling Salesman Problem
+    """
 
     def __init__(self, textFormat: str):
         self.numberOfCities = 0
         self.distances = []
-        self._createProblem(textFormat)
+        self._createTSProblem(textFormat)
 
-    def _createProblem(self, textFormat):
+    def _createTSProblem(self, textFormat):
         lines = textFormat.split('\n')
         self.numberOfCities = int(lines[0])
         for line in lines[1:]:
@@ -16,7 +19,7 @@ class Problem:
                 self.distances.append([int(number) for number in line.split(',')])
 
 
-class ProblemResult:
+class TSProblemResult:
 
     def __init__(self, numberOfCities: int, cities: List[int], totalTime: int):
         self.numberOfCities = numberOfCities
